@@ -19,9 +19,6 @@
  * @param {TreeNode} root
  * @return {string}
  */
-var serialize = function(root) {
-    
-};
 
 /**
  * Decodes your encoded data to tree.
@@ -29,8 +26,35 @@ var serialize = function(root) {
  * @param {string} data
  * @return {TreeNode}
  */
-var deserialize = function(data) {
-    
+
+var serializeDFS = function(root, str) {
+    if (root == null) {
+        return str += "*,";
+    } else {
+        str += root.val+",";
+        str = serializeDFS(root.left, str);
+        str = serializeDFS(root.right, str);
+    }
+    return str;
+};
+
+
+var deserializeDFS = function(data) {
+    let nodes = data.split(',');
+
+    var recur = function() {
+        let next = nodes.shift();
+        if (next == "*") {
+            return null;
+        } else {
+            let node = new TreeNode(next);
+            node.left = recur();
+            node.right = recur();
+            return node;
+        }
+    }
+
+    return recur();
 };
 
 /**
@@ -38,4 +62,3 @@ var deserialize = function(data) {
  * deserialize(serialize(root));
  */
 // @lc code=end
-
