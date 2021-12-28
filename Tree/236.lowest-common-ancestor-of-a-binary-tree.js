@@ -19,7 +19,9 @@
  * @return {TreeNode}
  */
 var lowestCommonAncestor = function(root, p, q) {
-    
+    //recursion
+        
+    //iterate
 };
 // @lc code=end
 
