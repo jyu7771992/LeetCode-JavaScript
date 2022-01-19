@@ -71,8 +71,29 @@
  * @param {string[]} tokens
  * @return {number}
  */
-var evalRPN = function(tokens) {
-    
+
+ const OPERATORS = {
+    "+": (a, b) => a + b,
+    "-": (a, b) => a - b,
+    "/": (a, b) => Math.trunc(a / b),
+    "*": (a, b) => a * b,
 };
+
+var evalRPN = function(tokens) {
+    const stack = [];
+
+    for (const token of tokens) {
+        if (token in OPERATORS) {
+            const n2 = stack.pop();
+            const n1 = stack.pop();
+            const operation = OPERATORS[token];
+            stack.push(operation(n1, n2));
+        } else {
+            stack.push(Number(token));//String -> Number
+        }
+    }
+
+    return stack.pop();
+}
 // @lc code=end
 

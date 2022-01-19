@@ -64,21 +64,24 @@
  */
 //前序遍歷 root-> left.node->right.node
 //use stack to record if the value is not "#", one parent node has 2 nodes
+//there is no peek function in JS, so you have to implement peek yourself
 var isValidSerialization = function(preorder) {
     let stack = preorder[0] === '#' ? [] : [2];
     let reconPreorder = preorder.split(',').slice(1);
-    
-    for(let val of reconPreorder){
-        if(stack.length === 0){
+    console.log(reconPreorder);
+    for(let val of reconPreorder){//#
+        if(stack.length === 0){   
             stack.push(0);
         }
-        stack[stack.length - 1] === 1 ? stack.pop() : stack[stack.length - 1]--;
+        // lastElement in Array: stack[stack.length - 1];//[1]
+        (stack[stack.length - 1] === 1) ? stack.pop() : stack[stack.length - 1]--;// 2-1 ==1
         if(val !== "#"){
-            stack.push(2);
+            stack.push(2);[2]
+            console.log(stack);
         }
     }
 	
-    return !stack.length;
+    return !stack.length;//true
 };
 // @lc code=end
 
