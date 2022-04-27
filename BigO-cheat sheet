@@ -1,0 +1,8 @@
+## - Big Os
+O(1) - Constant - no loop
+O(log N) - Logarithmic - usually searching algorithms have log(n) if they are sorted (Binary Search) ( not on hash map)
+O(n) - Linear - for loops while loops
+O(n * log(n)) Log Linear - Sorting operations usually
+O(n^2) Quadratic - every element in a collection needs to be compared to every other element. Two nested loops.
+O(2^n) Exponential - recursive algorithms that solve a problem of size n
+O(n!) Factorial - you are adding a loop for every element

@@ -1,5 +1,5 @@
 names=['Steven XL', 'Steven XVI', 'David IX'];
+const symbol = {}
 names.forEach(item => {
-    item.split(' ');
-    console.log(item.split(' '));
+    let name = item.split(' ');
 });

@@ -9,7 +9,9 @@
 // Input:  {9, 6, 4, 5, 8}
 // Output:  2
 // The two inversions are {9, 6, 4} and {9, 6, 5}
+//O(n*n)
 
+//預處理 DP //紀錄右邊小的 //紀錄左邊大的
 function getInvCount(arr, n)
     {
         let invcount = 0; // initialize result

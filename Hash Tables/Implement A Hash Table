@@ -1,0 +1,46 @@
+class HashTable{
+    constructor(size){
+        this.data = new Array(size);
+    }
+
+    _hash(key){// underscroll means private properity
+        let hash = 0;
+        let len = this.data.length;
+        for(let i = 0; i < key.length; i++){
+            hash = (hash + key.charCodeAt(i) * i) % len; 
+            console.log(hash);
+            //loops in each character in Cheese word
+            //char C will access this function first
+            //% len means to check the char is in the limited size of memory
+            //string.prototype.charCodeAt
+            //chatCodeAt : return integer between 0 and 65535, representing the UTF-16 code unit at the given index;
+            //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt
+        }
+        return hash;
+    }
+    set(key, value){
+        let address = this._hash(key);//store this key
+        if(!this.data[address]){
+            this.data[address] = [];
+        }
+        this.data[address].push([key, value]);
+        return this.data;
+    }
+    get(key, value){
+        let address = this._hash(key);
+        const currentBucket = this.data(address);
+        console.log(currentBucket);
+    }
+
+}
+
+const myHashTable = new HashTable(50);
+// myHashTable._hash('Cheese');
+myHashTable.set('Cheese', 10000);
+myHashTable.set('Apples', 45);
+myHashTable.get('Apples');
+// myHashTable.set('Cheese', 10000);
+// myHashTable.get('Cheese');
+console.log(myHashTable.set('Cheese', 10000));
+console.log(myHashTable.set('Apples', 45));
+console.log(myHashTable.get('Apples'));
